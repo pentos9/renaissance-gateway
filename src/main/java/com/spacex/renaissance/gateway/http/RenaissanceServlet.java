@@ -13,6 +13,17 @@ public class RenaissanceServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.service(req, resp);
+        renaissanceRunner.init(req, resp);
+        try {
+            renaissanceRunner.preRoute();
+            renaissanceRunner.route();
+            renaissanceRunner.postRoute();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            RequestContext.getCurrentContext().getResponse().sendError(HttpServletResponse.SC_NOT_FOUND, ex.getMessage());
+        } finally {
+            RequestContext.getCurrentContext().unset();
+        }
+
     }
 }

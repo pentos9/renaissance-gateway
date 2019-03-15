@@ -20,13 +20,21 @@ public class RequestContext extends ConcurrentHashMap<String, Object> {
         }
     };
 
-    public static RequestContext getRequestContext() {
+    public static RequestContext getCurrentContext() {
         RequestContext requestContext = threadLocal.get();
         return requestContext;
     }
 
+    public void setRequest(HttpServletRequest httpServletRequest) {
+        put("request", httpServletRequest);
+    }
+
     public HttpServletRequest getRequest() {
         return (HttpServletRequest) get("request");
+    }
+
+    public HttpServletResponse getResponse() {
+        return (HttpServletResponse) get("response");
     }
 
     public void setResponse(HttpServletResponse response) {

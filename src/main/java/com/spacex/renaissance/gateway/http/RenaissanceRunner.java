@@ -46,7 +46,9 @@ public class RenaissanceRunner {
 
 
     public void init(HttpServletRequest request, HttpServletResponse response) {
-
+        RequestContext requestContext = RequestContext.getCurrentContext();
+        requestContext.setRequest(request);
+        requestContext.setResponse(response);
     }
 
     public void runFilter(String sType) {
