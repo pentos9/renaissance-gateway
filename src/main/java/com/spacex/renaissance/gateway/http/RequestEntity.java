@@ -1,4 +1,4 @@
 package com.spacex.renaissance.gateway.http;
 
-public class RequestEntity {
+public class RequestEntity<Object> {
 }
