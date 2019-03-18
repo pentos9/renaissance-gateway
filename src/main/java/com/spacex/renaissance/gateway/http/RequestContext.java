@@ -45,7 +45,7 @@ public class RequestContext extends ConcurrentHashMap<String, Object> {
         put("requestEntity", requestEntity);
     }
 
-    public RequestEntity getRequestEntity(RequestEntity requestEntity) {
+    public RequestEntity getRequestEntity() {
         return (RequestEntity) get("requestEntity");
     }
 
